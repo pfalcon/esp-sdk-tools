@@ -21,6 +21,7 @@ xtensa-lx106-elf-ld \
 --emit-relocs \
 --no-check-sections \
 -nostdlib \
+-Map=$1/esp8266-sdk-$1.map --cref \
 -L$1 \
 -T $LDSCRIPT \
 -T region-override.ld \

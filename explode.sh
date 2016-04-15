@@ -23,7 +23,7 @@ echo $TOP
 to_link=""
 
 # Remove superfluous/duplicate libs
-rm -f libcrypto.a libwps.a liblwip_536.a libupgrade.a libat.a libjson.a
+rm -f liblwip_536.a libupgrade.a libat.a libjson.a
 
 for f in *.a; do
     dir=$(basename $f .a)
@@ -36,6 +36,10 @@ for f in *.a; do
 done
 
 # This references ap_get_sta, which may be not defined in some (all?) SDK versions
-rm libwpa/ieee802_1x.o
+rm -f libwpa/ieee802_1x.o
+# Duplicate of wpa2/eap_common.o
+rm -f libwps/eap_common.o
+# Duplicate of wpa2/bignum.o
+rm -f libcrypto/bignum.o
 
 xtensa-lx106-elf-ld $to_link -r -o esp8266-sdk-$1.o

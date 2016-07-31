@@ -23,7 +23,7 @@ echo $TOP
 to_link=""
 
 # Remove superfluous/duplicate libs
-rm -f liblwip_536.a libupgrade.a libat.a libjson.a
+rm -f liblwip_536.a libupgrade.a libat.a libjson.a libdriver.a libgcc.a
 
 for f in *.a; do
     dir=$(basename $f .a)

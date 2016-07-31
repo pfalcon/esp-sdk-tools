@@ -9,3 +9,8 @@ unsigned int default_private_key_len = 0;
 void user_init(void)
 {
 }
+
+int user_rf_cal_sector_set(void)
+{
+    return 1024 - 5;
+}

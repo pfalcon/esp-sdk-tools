@@ -12,6 +12,7 @@ if [ "$1" == "" ]; then
 fi
 
 xtensa-lx106-elf-gcc -c empty_user.c
+xtensa-lx106-elf-gcc -c empty_libgcc.c
 
 # Different SDK versions use different memory layouts, so we should
 # use per-version linker script.
@@ -25,7 +26,10 @@ xtensa-lx106-elf-ld \
 -L$1 \
 -T $LDSCRIPT \
 -T region-override.ld \
-$1/esp8266-sdk-$1.o empty_user.o \
+$1/esp8266-sdk-$1.o empty_user.o empty_libgcc.o \
 -o $1/esp8266-sdk-$1 \
 $(xtensa-lx106-elf-gcc -print-file-name=libc.a) \
-$(xtensa-lx106-elf-gcc -print-libgcc-file-name)
+
+# No longer link with libgcc to avoid iRAM segment overflow,
+# replaced with empty_libgcc.o
+#$(xtensa-lx106-elf-gcc -print-libgcc-file-name)

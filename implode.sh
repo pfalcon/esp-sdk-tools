@@ -43,6 +43,8 @@ rm -f libwps/eap_common.o
 # Duplicate of wpa2/bignum.o
 rm -f libcrypto/bignum.o
 
+../unshare-strings.sh .
+
 xtensa-lx106-elf-ld $to_link -r -o esp8266-sdk-$1.o
 
 # Former implode.sh

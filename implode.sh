@@ -71,3 +71,6 @@ $(xtensa-lx106-elf-gcc -print-file-name=libc.a) \
 # No longer link with libgcc to avoid iRAM segment overflow,
 # replaced with empty_libgcc.o
 #$(xtensa-lx106-elf-gcc -print-libgcc-file-name)
+
+# Options to explore:
+#--size-opt \
